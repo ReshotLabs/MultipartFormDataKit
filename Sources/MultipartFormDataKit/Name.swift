@@ -12,11 +12,7 @@ public struct Name {
 
 
     public static func create(by filename: String) -> ValidationResult<Name, FailureReason> {
-        guard let percentEncodedString = filename.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-            return .invalid(because: .cannotPercentEncode(debugInfo: filename))
-        }
-
-        return .valid(Name(asPercentEncoded: percentEncodedString))
+        return .valid(Name(asPercentEncoded: filename))
     }
 
 
